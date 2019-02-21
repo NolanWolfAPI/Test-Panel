@@ -1,0 +1,19 @@
+.layout {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #EFEFEF;
+
+  .content{
+    margin-top: 64px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    height: calc(100vh - 64px);
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}

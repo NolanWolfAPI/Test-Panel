@@ -1,0 +1,29 @@
+<nav class="main">
+  <ul class="top">
+    <li *ngFor="let link of links">
+      <has-permission [permission]="link.permissionCheck">
+        <ng-container *ngIf="link.path == null">
+          <a [ngClass]="{'expanded': link.expanded}" (click)="click(link)" href="Javascript:void(0)">
+            <i class="material-icons">{{link.icon}}</i>
+            <span class="label">{{link.name}}</span>
+          </a>
+          <ul class="children" *ngIf="link.expanded">
+            <li *ngFor="let child of link.children">
+              <a (click)="linkClicked(child)" routerLink="{{child.path}}">
+                <!--<i class="material-icons">{{child.icon}}</i>-->
+                <span class="label">{{child.name}}</span>
+              </a>
+            </li>
+          </ul>
+          <!--<nav-list (pageChange)="linkClicked(link)" [expanded]="link.expanded" [links]="link.children"></nav-list>-->
+        </ng-container>
+
+        <ng-container *ngIf="link.path != null">
+          <a (click)="linkClicked(link)" routerLink="{{link.path}}">
+            <i class="material-icons">{{link.icon}}</i><span class="label">{{link.name}}</span>
+          </a>
+        </ng-container>
+      </has-permission>
+    </li>
+  </ul>
+</nav>

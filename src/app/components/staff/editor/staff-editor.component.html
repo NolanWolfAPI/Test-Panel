@@ -1,0 +1,36 @@
+<div class="staff-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/staff"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Staff Member</h1>
+          </div>
+          <ng-template #old>
+            <h5>Staff Member</h5>
+            {{staff.givenNames}} {{staff.familyName}} ({{player?.displayName}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #staffForm="ngForm" (ngSubmit)="save()">
+          <text-box [(ngModel)]="staff.givenNames" name="staff.givenNames" label="Given Names"></text-box>
+          <text-box [(ngModel)]="staff.familyName" name="staff.familyName" label="Family Name"></text-box>
+          <text-box [(ngModel)]="staff.email" name="staff.email" label="Email"></text-box>
+          <check-box [(ngModel)]="staff.isActive" name="staff.isActive" label="Active"></check-box>
+          <text-box [(ngModel)]="staff.user_id" name="staff.user_id" label="USER ID"></text-box>
+          <!--<player-search [uuid]="staff.user_id"></player-search>-->
+          <role-dropdown label="Role" [(ngModel)]="staff.role_id" name="staff.role_id"></role-dropdown>
+          <password-box *ngIf="isCreate" [(ngModel)]="staff.password" name="staff.password" label="Password"></password-box>
+
+          <button type="submit" class="btn btn-success right" [disabled]="!staffForm.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

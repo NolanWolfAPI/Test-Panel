@@ -1,0 +1,16 @@
+<ul class="pagination center" *ngIf="display">
+  <li [ngClass]="{'disabled':pageNumber - 1 < 1, 'waves-effect': pageNumber - 1 > 0 }"><a (click)="changePage(1)"><i class="material-icons">first_page</i></a></li>
+  <li [ngClass]="{'disabled':pageNumber - 1 < 1, 'waves-effect': pageNumber - 1 > 0 }"><a (click)="changePage(previousNumber)"><i class="material-icons">chevron_left</i></a></li>
+
+  <ng-container *ngFor="let page of buttonRange">
+    <li *ngIf="page !== -1; else elseb"  [ngClass]="{'active':page == pageNumber, 'waves-effect': page != pageNumber}"><a r (click)="changePage(page)">{{page}}</a></li>
+
+
+    <ng-template #elseb>
+      <li [ngClass]="{'disabled': true}"><a>...</a></li>
+    </ng-template>
+  </ng-container>
+
+  <li [ngClass]="{'disabled':pageNumber + 1 > lastPageNumber, 'waves-effect': pageNumber + 1 <= lastPageNumber }"><a (click)="changePage(nextNumber)"><i class="material-icons">chevron_right</i></a></li>
+  <li [ngClass]="{'disabled':pageNumber + 1 > lastPageNumber, 'waves-effect': pageNumber + 1 <= lastPageNumber }"><a (click)="changePage(lastPageNumber)"><i class="material-icons">last_page</i></a></li>
+</ul>

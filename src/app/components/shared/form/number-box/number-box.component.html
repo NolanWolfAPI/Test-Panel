@@ -1,0 +1,16 @@
+<div class="input-field">
+  <input type="number"
+         [(ngModel)]="value"
+         id="{{id}}"
+         (blur)="onBlur()"
+         (keypress)="keyPressed($event)"
+         (change)="onChange($event)"
+         [ngClass]="{'validate': validate}"
+         [disabled]="disabled"
+         [required]="required"
+         [min]="min"
+         [max]="max"
+  />
+  <label for="{{id}}" [ngClass]="{'active': value}">{{label}}</label>
+  <span *ngIf="subText.length > 0" class="helper-text" data-error="wrong" data-success="right">{{subText}}</span>
+</div>

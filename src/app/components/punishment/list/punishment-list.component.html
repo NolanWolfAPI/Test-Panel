@@ -1,0 +1,39 @@
+<div class="phrase-list">
+  <!--<div class="search-wrapper card">-->
+    <!--<input placeholder="Phrase Search" [(ngModel)]="searchQuery" id="search" (keyup.enter)="search()"><i class="material-icons" (click)="search()">search</i>-->
+  <!--</div>-->
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Punishments</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <a routerLink="/punishments/new"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th>Offense Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+        <ng-container *ngIf="rows.length > 0">
+          <tr *ngFor="let row of rows" routerLink="/punishments/{{row.item.id}}/edit">
+            <td>{{row.item.offense}}</td>
+            <td>{{row.item.description}}</td>
+            <td><span class="marked">{{row.item.repeat_actions.length}} Action(s)</span></td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="rows.length <= 0">
+          <tr>
+            <td colspan="4">Sorry but we can't find any punishments</td>
+          </tr>
+        </ng-container>
+      </table>
+      <pagination [totalCount]="total" [pageNumber]="pageNumber" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+</div>

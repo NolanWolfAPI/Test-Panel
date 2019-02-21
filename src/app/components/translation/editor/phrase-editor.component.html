@@ -1,0 +1,62 @@
+<div class="phrase-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/translations"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Translation</h1>
+          </div>
+          <ng-template #old>
+            <h5>Translation</h5>
+            {{phrase.id}}
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #phraseForm="ngForm" (ngSubmit)="save()">
+          <div class="input-field">
+            <input type="text" [(ngModel)]="phrase.name" id="phrase.name" name="phrase.name" class="validate" required/>
+            <label for="phrase.name" [ngClass]="{'active': phrase.name}">Phrase Name</label>
+          </div>
+
+          <language-dropdown [(ngModel)]="phrase.preview" name="phrase.preview" validate required label="Phrase Preview Language"></language-dropdown>
+
+          <div id="translations">
+            <table class="striped responsive-table">
+              <tr>
+                <th>Language</th>
+                <th>Translation</th>
+                <th>Remove</th>
+              </tr>
+              <tr *ngFor="let translation of flatternedTranslations; let i = index">
+                <td>
+                  <language-dropdown [(ngModel)]="translation.key" name="flatternedTranslations[{{i}}].key" validate required></language-dropdown>
+                </td>
+                <td>
+                  <input type="text" [(ngModel)]="translation.value" id="flatternedTranslations[{{i}}].value" name="flatternedTranslations[{{i}}].value" class="validate" required/>
+                </td>
+                <td><button class="btn red left" (click)="removeRow(translation.key)">Remove</button></td>
+              </tr>
+              <tr *ngFor="let translation of newTranslations; let i = index">
+                <td>
+                  <language-dropdown [(ngModel)]="translation.key" name="newTranslations[{{i}}].key" validate required></language-dropdown>
+                </td>
+                <td>
+                  <input type="text" [(ngModel)]="translation.value" id="newTranslations[{{i}}].value" name="newTranslations[{{i}}].value" class="validate" required/>
+                </td>
+                <td><button class="btn red left" (click)="removeNewRow(translation.key)">minus</button></td>
+              </tr>
+            </table>
+            <button class="btn green left" (click)="addRow($event)">Add</button>
+            <button type="submit" class="btn right" [disabled]="!phraseForm.form.valid">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

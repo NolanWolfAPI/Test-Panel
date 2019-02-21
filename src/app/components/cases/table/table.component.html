@@ -1,0 +1,44 @@
+<table class="cases-table">
+  <tr>
+    <th>Judgementee</th>
+    <th>Assignee</th>
+    <th>Created At</th>
+    <th>Closed At</th>
+    <th>Outcome</th>
+    <th>Pardoned</th>
+  </tr>
+  <ng-container *ngIf="loading.isLoading()">
+    <tr>
+      <td colspan="4">
+        <loading></loading>
+      </td>
+    </tr>
+  </ng-container>
+  <ng-container *ngIf="loading.hasSucceeded()">
+    <ng-container *ngIf="rows.length > 0">
+      <tr *ngFor="let row of rows" routerLink="/cases/{{row.case.id}}/edit">
+        <td>{{row.judgementee?.displayName}}</td>
+        <td>{{row.assignee?.displayName}}</td>
+        <td>{{timeConverter(row.case.created_at)}}</td>
+        <td>{{ row.case.closed_at ? timeConverter(row.case.closed_at) : '' }}</td>
+        <td>{{getOutcome(row.case.outcome)}}</td>
+        <td>
+          <label>
+            <input type="checkbox" [(ngModel)]="row.case.pardoned" id="case.pardoned" name="case.pardoned" readonly/>
+            <span></span>
+          </label>
+        </td>
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="rows.length <= 0">
+      <tr>
+        <td colspan="4">Sorry but we can't find any cases</td>
+      </tr>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="loading.hasFailed()">
+    <tr>
+      <td colspan="4">I'm sorry but something has gone wrong</td>
+    </tr>
+  </ng-container>
+</table>

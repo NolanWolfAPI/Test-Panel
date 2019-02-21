@@ -1,0 +1,53 @@
+<div class="roles">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Custom API Configs</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <a routerLink="/customapiconfigs/new">
+            <i class="material-icons">add</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+        <ng-container *ngIf="loading.isLoading()">
+          <tr>
+            <td colspan="4">
+              <loading></loading>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="loading.hasSucceeded()">
+          <ng-container *ngIf="customApiConfigs.length > 0">
+            <tr *ngFor="let row of customApiConfigs" routerLink="/customapiconfigs/{{row.id}}/edit">
+              <td>{{row.tableConfig.name}}</td>
+              <td class="actions">
+                <has-permission permission="roles.delete">
+                  <i (click)="delete($event, row.id)" title="Delete" class="material-icons">delete</i>
+                </has-permission>
+              </td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="customApiConfigs.length <= 0">
+            <tr>
+              <td colspan="4">Sorry but we can't find any roles</td>
+            </tr>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="loading.hasFailed()">
+          <tr>
+            <td colspan="4">I'm sorry but something has gone wrong</td>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+</div>

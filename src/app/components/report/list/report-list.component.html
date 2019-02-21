@@ -1,0 +1,17 @@
+<div class="reports">
+  <h1>Reports</h1>
+  <div class="card">
+    <table>
+      <tr>
+        <th>Requestee</th>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let row of reports" routerLink="/reports/{{row.id}}">
+        <td>{{row.requestee_id}}</td>
+        <td>{{row.description}}</td>
+        <td>{{row.status}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

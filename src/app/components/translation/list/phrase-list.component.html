@@ -1,0 +1,50 @@
+<div class="phrase-list">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Translations</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <div class="input-field">
+            <i class="material-icons prefix" (click)="search()">search</i>
+            <input placeholder="Phrase Search" [(ngModel)]="searchQuery" id="search" (keyup.enter)="search()">
+            <label for="search"></label>
+          </div>
+        </div>
+        <div>
+          <a routerLink="/translations/new">
+            <i class="material-icons">add</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Preview</th>
+          <th></th>
+        </tr>
+        <ng-container *ngIf="rows.length > 0">
+          <tr *ngFor="let row of rows" routerLink="/translations/{{row.phrase.id}}/edit">
+            <td>{{row.phrase.name}}</td>
+            <td>{{row.phrase.translations[row.phrase.preview]}}</td>
+            <td class="actions">
+              <!--<a routerLink="/ranks/{{row.id}}/edit" title="Edit"><i class="material-icons">edit</i></a>-->
+              <has-permission permission="phrase.delete">
+                <i (click)="delete($event, row.id)" title="Delete" class="material-icons">delete</i>
+              </has-permission>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="rows.length <= 0">
+          <tr>
+            <td colspan="4">Sorry but we can't find any phrases</td>
+          </tr>
+        </ng-container>
+      </table>
+      <pagination [totalCount]="total" [pageNumber]="pageNumber" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="phrase-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/languages"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <ng-container *ngIf="isCreate; else old">
+          <h5>New Language</h5>
+        </ng-container>
+        <ng-template  #old>
+          <h5>Language ID</h5>
+          {{id}}
+        </ng-template >
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #form="ngForm" (ngSubmit)="save()" autocomplete="off">
+          <text-box [(ngModel)]="language.name" name="language.name" label="Name"></text-box>
+          <iso6391-dropdown [(ngModel)]="language.languageCode" name="language.languageCode" label="Language Code"></iso6391-dropdown>
+          <text-box [(ngModel)]="language.skullUUID" name="language.skullUUID" label="Skull UUID"></text-box>
+
+          <button type="submit" class="btn right" [disabled]="!form.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

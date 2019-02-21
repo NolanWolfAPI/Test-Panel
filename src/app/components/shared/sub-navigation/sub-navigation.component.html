@@ -1,0 +1,25 @@
+<nav class="sub">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo"><i class="material-icons">beach_access</i> <span *ngIf="pageTitle.length > 0" class="marked">{{pageTitle}}</span></a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        <a #dropdown class="dropdown-trigger dropdown-button" href="#" data-target="profileDropdown">
+          <i class="material-icons left">arrow_drop_down</i>
+          {{name}}
+          <img class="image" src="https://crafatar.com/avatars/{{mcId}}?overlay" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ul id="profileDropdown" class="dropdown-content">
+  <!--<has-permission permission="staff.list">-->
+    <!--<li><a routerLink="/staff/{{staffId}}">Staff Profile</a></li>-->
+  <!--</has-permission>-->
+  <li><a routerLink="/staff/{{staffId}}/resetpassword">Reset Password</a></li>
+  <li class="divider" tabindex="-1"></li>
+  <li><a (click)="clearSession($event)">Clear Session Data</a></li>
+  <li class="divider" tabindex="-1"></li>
+  <li><a (click)="logoff()">Logoff</a></li>
+</ul>

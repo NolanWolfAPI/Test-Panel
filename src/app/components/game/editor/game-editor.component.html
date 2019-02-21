@@ -1,0 +1,54 @@
+<div class="game-details">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/games"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Game</h1>
+          </div>
+          <ng-template #old>
+            <h5>Game</h5>
+            {{game.name}} ({{game.id}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #form="ngForm" (ngSubmit)="save()">
+          <material-dropdown [(ngModel)]="game.iconMap" name="game.iconMap" label="Icon"></material-dropdown>
+          <text-box [(ngModel)]="game.name" name="game.name" label="Name"></text-box>
+          <text-box [(ngModel)]="game.filename" name="game.filename" label="Filename"></text-box>
+          <text-box [(ngModel)]="game.description" name="game.description" label="Description"></text-box>
+
+          <check-box [(ngModel)]="game.isLive" name="game.isLive" label="Live"></check-box>
+          <check-box [(ngModel)]="game.isActive" name="game.isActive" label="Active"></check-box>
+          <check-box [(ngModel)]="game.isBeta" name="game.isBeta" label="Beta"></check-box>
+
+          <button type="submit" class="btn btn-success right" [disabled]="!form.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="card" *ngIf="gameFound">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Game Modes</h5>
+      </div>
+      <div class="right-side">
+        <div>
+          <a routerLink="/games/{{id}}/modes/new">
+            <i class="material-icons">add</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <game-mode-list [id]="game.id"></game-mode-list>
+    </div>
+  </div>
+
+</div>

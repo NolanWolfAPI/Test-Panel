@@ -1,0 +1,74 @@
+<div class="role-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/customapiconfigs"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Custom Api Config</h1>
+          </div>
+          <ng-template #old>
+            <h5>Custom Api Config</h5>
+            {{customApiConfig.tableConfig.name}} ({{customApiConfig.id}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #form="ngForm" (ngSubmit)="save($event)">
+          <text-box [(ngModel)]="customApiConfig.tableConfig.name" name="customApiConfig.tableConfig.name" label="Name"></text-box>
+          <div class="row">
+            <div class="col s6" style="padding-left: 0">
+              <number-box [(ngModel)]="customApiConfig.tableConfig.shards" name="customApiConfig.tableConfig.shards" label="Shards" [min]="1" [max]="3" subText="Min: 1, Max: 3"></number-box>
+            </div>
+            <div class="col s6" style="padding-right: 0">
+              <number-box [(ngModel)]="customApiConfig.tableConfig.replicas" name="customApiConfig.tableConfig.replicas" label="Replicas" [min]="1" [max]="3" subText="Min: 1, Max: 3"></number-box>
+            </div>
+          </div>
+
+          <table>
+            <tr>
+              <td></td>
+              <td>Name</td>
+              <td>Type</td>
+              <td>Index</td>
+              <td></td>
+            </tr>
+            <tr *ngFor="let field of model;index as i">
+              <td style="width: 10em">
+                <span *ngIf="field.primaryKey" class="marked">Primary Key</span>
+                <span *ngIf="field.index" class="marked">Index</span>
+              </td>
+              <td>
+                <text-box [(ngModel)]="model[i].name" name="model[{{i}}].name" [required]="true"></text-box>
+              </td>
+              <td>
+                <dropdown [(ngModel)]="model[i].type" name="model[{{i}}].type" [options]="typeDropdownOptions"></dropdown>
+              </td>
+              <td>
+                <check-box *ngIf="!field.primaryKey" [(ngModel)]="model[i].index" name="model[{{i}}].index"></check-box>
+                <check-box *ngIf="field.primaryKey" [disabled]="true"></check-box>
+              </td>
+              <td>
+                <i *ngIf="field.deletable;else e " (click)="delete($event, i)" title="Delete" class="material-icons">delete</i>
+                <ng-template #e>
+                  <i class="material-icons">b</i>
+                </ng-template>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4">
+                <i (click)="add($event)" title="Add New" class="material-icons">add</i>
+              </td>
+            </tr>
+          </table>
+
+          <button type="submit" class="btn right" [disabled]="!form.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

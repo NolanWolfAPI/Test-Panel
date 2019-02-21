@@ -1,0 +1,43 @@
+<div class="phrase-list">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Languages</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <a routerLink="/languages/new"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Language Code</th>
+          <th>Skull</th>
+          <th></th>
+        </tr>
+        <ng-container *ngIf="rows.length > 0">
+          <tr *ngFor="let row of rows" routerLink="/languages/{{row.item.id}}/edit">
+            <td>{{row.item.name}}</td>
+            <td>{{row.item.languageCode}}</td>
+            <td><img src="https://crafatar.com/avatars/{{row.item.skullUUID}}?overlay" /></td>
+            <td class="actions">
+              <!--<a routerLink="/ranks/{{row.id}}/edit" title="Edit"><i class="material-icons">edit</i></a>-->
+              <has-permission permission="languages.delete">
+                <i (click)="delete($event, row.id)" title="Delete" class="material-icons">delete</i>
+              </has-permission>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="rows.length <= 0">
+          <tr>
+            <td colspan="3">Sorry but we can't find any punishments</td>
+          </tr>
+        </ng-container>
+      </table>
+      <pagination [totalCount]="total" [pageNumber]="pageNumber" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<table class="table">
+  <tr>
+    <th *ngFor="let column of setup">{{column.title}}</th>
+  </tr>
+  <ng-container *ngIf="loading.isLoading()">
+    <tr>
+      <td colspan="4">
+        <loading></loading>
+      </td>
+    </tr>
+  </ng-container>
+  <ng-container *ngIf="loading.hasSucceeded()">
+    <ng-container *ngIf="data.length > 0">
+      <tr *ngFor="let row of data; index as rowIndex" [routerLink]="rowUrlRender(row)">
+        <td *ngFor="let item of setup">
+          <ng-container *ngIf="setup.cellRender; else default">
+            {{setup.cellRender(selectData(row,item))}}
+          </ng-container>
+          <div [ngSwitch]="selectDataType(row,item)">
+            <div *ngSwitchCase="'boolean'">
+              <p>
+                <label>
+                  <input type="checkbox" [checked]="selectData(row,item) && 'checked'" readonly="readonly"/>
+                  <span></span>
+                </label>
+              </p>
+            </div>
+            <div *ngSwitchDefault>
+              {{selectData(row,item)}}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="data.length <= 0">
+      <tr>
+        <td colspan="4">Sorry but we can't find any data</td>
+      </tr>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="loading.hasFailed()">
+    <tr>
+      <td colspan="4">I'm sorry but something has gone wrong</td>
+    </tr>
+  </ng-container>
+</table>

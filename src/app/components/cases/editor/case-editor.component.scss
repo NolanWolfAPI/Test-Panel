@@ -1,0 +1,84 @@
+.case-editor {
+  &.chatFullscreen {
+    height: calc(100vh - 6em);
+  }
+
+  .grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;//repeat(12, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 1em;
+
+    grid-template-areas:
+      "profile profile chat"
+      "stats stats chat"
+      "info info description"
+      "history history history"
+  ;
+
+    > .card {
+      margin: 0;
+    }
+
+    > .profile {
+      grid-area: profile;
+    }
+
+    > .stats {
+      grid-area: stats;
+    }
+
+    > .chat {
+      grid-area: chat;
+
+      .card-content {
+        height: calc(100% - 70px);
+      }
+
+      &.fullscreen {
+        grid-area: 1 / 1 / last / last;
+      }
+    }
+
+    > .caseinfo {
+      grid-area: info;
+    }
+
+    > .description {
+      grid-area: description;
+    }
+
+    > .history {
+      grid-area: history;
+    }
+  }
+
+ .time, .units {
+   width:49.8%;
+   display: inline-block;
+   align-items: center;
+ }
+
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  .divider {
+    border: 1px solid #9a9a9a;
+    height: 2em;
+    align-self: center;
+  }
+
+  .avatar-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      padding-bottom: 1em;
+    }
+  }
+}

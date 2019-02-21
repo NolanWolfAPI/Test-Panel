@@ -1,0 +1,41 @@
+<div class="staff-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/ranks"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Rank</h1>
+          </div>
+          <ng-template #old>
+            <h5>Rank</h5>
+            {{rank.name}} ({{rank.id}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #rankForm="ngForm" (ngSubmit)="save()">
+          <text-box [(ngModel)]="rank.name" name="rank.name" label="Name" required="true"></text-box>
+          <div class="row">
+            <div class="col s6" style="padding-left: 0">
+              <text-box [(ngModel)]="rank.prefix" name="rank.prefix" label="Prefix" required="true"></text-box>
+              <text-box [(ngModel)]="rank.suffix" name="rank.suffix" label="Suffix" required="true"></text-box>
+            </div>
+            <div class="col s6" style="padding-right: 0">
+              <playernamepreview-box [prefix]="rank.prefix" [suffix]="rank.suffix" label="Preview"></playernamepreview-box>
+            </div>
+          </div>
+          <rank-dropdown [(ngModel)]="rank.parent_id" name="rank.parent_id" label="Parent" [additionalOptions]="[{key:'None', value:'00000000-0000-0000-0000-000000000000'}]"></rank-dropdown>
+          <check-box [(ngModel)]="rank.isPriority" name="rank.isPriority" label="Is Priority"></check-box>
+          <permissions-editor [(ngModel)]="rank.permissions" name="rank.permissions" label="Permissions" [gamePermission]="true"></permissions-editor>
+
+          <button type="submit" class="btn btn-success right" [disabled]="!rankForm.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

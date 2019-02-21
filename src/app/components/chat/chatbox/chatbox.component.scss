@@ -1,0 +1,21 @@
+.chatbox {
+  height: 100%;
+
+  &.fullscreen .messages{
+    max-height: none;
+  }
+
+  .messages {
+    overflow-y: scroll;
+    height: calc(100% - 4em);
+    padding-right: .5em;
+    max-height: 300px;
+  }
+
+  .send {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 2em);
+    background-color: white;
+  }
+}

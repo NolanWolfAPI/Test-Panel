@@ -1,0 +1,51 @@
+<div class="cases">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Chat Filter Expressions</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <a routerLink="/chatfilters/new">
+          <i class="material-icons">add</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Expression</th>
+          <th>Active</th>
+        </tr>
+        <ng-container *ngIf="loading.isLoading()">
+          <tr>
+            <td colspan="4">
+              <loading></loading>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="loading.hasSucceeded()">
+          <ng-container *ngIf="chatFilters.length > 0">
+            <tr *ngFor="let chatFilter of chatFilters" routerLink="/chatfilters/{{chatFilter.id}}/edit">
+              <td>{{chatFilter.name}}</td>
+              <td>{{chatFilter.expression}}</td>
+              <td>{{chatFilter.active}}</td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="chatFilters.length <= 0">
+            <tr>
+              <td colspan="4">Sorry but we can't find any cases</td>
+            </tr>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="loading.hasFailed()">
+          <tr>
+            <td colspan="4">I'm sorry but something has gone wrong</td>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+</div>

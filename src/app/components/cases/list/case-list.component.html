@@ -1,0 +1,28 @@
+<div class="cases">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>CASES</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <check-box [(ngModel)]="showClosed" name="showClosed" label="Show closed cases" [onChange]="toggle"></check-box>
+        </div>
+        <div>
+          <div class="input-field">
+            <i class="material-icons prefix">search</i>
+            <input [(ngModel)]="searchText" id="searchText" name="searchText" type="text" autocomplete="off">
+            <label for="searchText"></label>
+          </div>
+        </div>
+        <div>
+            <a routerLink="/cases/new"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <case-table [cases]="cases"></case-table>
+      <pagination [totalCount]="total" [pageNumber]="pageNumber" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="staff-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/chatfilters"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Chat Filter Expression</h1>
+          </div>
+          <ng-template #old>
+            <h5>Chat Filter Expression</h5>
+            {{chatFilter.name}} ({{chatFilter.id}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #chatFilterForm="ngForm" (ngSubmit)="save()">
+          <div class="input-field">
+            <input type="text" [(ngModel)]="chatFilter.name" id="chatFilter.name" name="chatFilter.name" class="validate" required/>
+            <label for="chatFilter.name">Name</label>
+          </div>
+
+          <div class="input-field">
+            <input type="text" [(ngModel)]="chatFilter.expression" id="chatFilter.expression" name="chatFilter.expression" class="validate" required/>
+            <label for="chatFilter.expression">Expression</label>
+          </div>
+
+          <p>
+            <label>
+              <input type="checkbox" [(ngModel)]="chatFilter.active" id="chatFilter.active" name="chatFilter.active" class="validate"/>
+              <span>Is Active</span>
+            </label>
+          </p>
+
+          <button type="submit" class="btn btn-success right" [disabled]="!chatFilterForm.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

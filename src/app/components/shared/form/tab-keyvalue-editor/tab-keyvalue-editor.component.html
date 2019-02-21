@@ -1,0 +1,9 @@
+<div class="keyvalue-editor">
+  <label *ngIf="label">{{label}}</label>
+  <ul #tabs class="tabs">
+    <li class="tab" *ngFor="let item of innerValue"><a href="#{{keyCellRender(item?.key)}}">{{keyCellRender(item?.key)}}</a></li>
+  </ul>
+  <div id="{{keyCellRender(item?.key)}}" *ngFor="let item of innerValue, index as i">
+    <object-editor [(ngModel)]="item.value" name="innerValue[{{i}}].value" [onChange]="_onChange"></object-editor>
+  </div>
+</div>

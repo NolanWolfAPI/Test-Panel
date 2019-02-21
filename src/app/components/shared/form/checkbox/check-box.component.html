@@ -1,0 +1,6 @@
+<p>
+  <label>
+    <input type="checkbox" [(ngModel)]="value" id="{{id}}" (blur)="onBlur()" (change)="onChange($event)" [ngClass]="{'validate': validate}" [disabled]="disabled && 'disabled'" [required]="required && 'required'" [readonly]="readonly && 'readonly'"/>
+    <span>{{label}}</span>
+  </label>
+</p>

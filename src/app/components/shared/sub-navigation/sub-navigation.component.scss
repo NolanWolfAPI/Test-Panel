@@ -1,0 +1,29 @@
+nav.sub {
+  background-color: #FFC60F;
+  position: fixed;
+  box-shadow: none;
+  z-index: 90;
+
+  .marked {
+    background-color: white;
+    color: #FFC60F;
+  }
+
+  ul a {
+    font-size: 21px;
+
+    .image {
+      max-height: 40px;
+      transform: translateY(11px);
+    }
+  }
+
+  .brand-logo {
+    padding: 0 .7em;
+    font-size: 21px;
+  }
+
+  .dropdown-content {
+    top: 64px !important;
+  }
+}

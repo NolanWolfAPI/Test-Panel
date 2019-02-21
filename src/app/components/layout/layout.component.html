@@ -1,0 +1,8 @@
+<div class="layout">
+  <sub-navigation [pageTitle]="pageTitle"></sub-navigation>
+  <navigation (pageChange)="pagedLoaded($event)"></navigation>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

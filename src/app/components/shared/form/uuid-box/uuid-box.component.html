@@ -1,0 +1,12 @@
+<div class="input-field">
+  <input type="text"
+         [(ngModel)]="value"
+         id="{{id}}"
+         [ngClass]="{'validate': validate}"
+         (blur)="onBlur()"
+         (change)="onChange($event)"
+         [disabled]="disabled"
+         [required]="required"
+         pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+  <label for="{{id}}" [ngClass]="{'active': value}">{{label}}</label>
+</div>

@@ -1,0 +1,4 @@
+<div class="input-field">
+  <input #search [(ngModel)]="displayValue" type="text" id="{{id}}" [value]="value" [ngClass]="{'validate': validate, 'autocomplete': true}" (keypress)="keyPress($event)" [disabled]="disabled" [required]="required" />
+  <label for="{{id}}" [ngClass]="{'active': value}">{{label}}</label>
+</div>

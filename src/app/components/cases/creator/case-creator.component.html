@@ -1,0 +1,52 @@
+<div class="case-editor">
+  <form #staffForm="ngForm" (ngSubmit)="save()" style="height: 100%">
+    <div class="card">
+      <div class="card-title">
+        <div class="left-side">
+          <a routerLink="/cases"><i class="material-icons">chevron_left</i> BACK</a>
+        </div>
+        <div class="right-side">
+          <h5>New Case</h5>
+        </div>
+      </div>
+      <div class="card-content">
+
+        <player-search [(ngModel)]="case.judgementee_id" name="case.judgementee_id" [required]="true"
+                       label="Judgementee"></player-search>
+        <staff-dropdown [(ngModel)]="case.assignee_id" name="case.assignee_id" [required]="true"
+                        label="Assignee"></staff-dropdown>
+
+        <textarea-box [(ngModel)]="case.description" name="case.description" label="Description"></textarea-box>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-tabs">
+        <ul #tabs class="tabs tabs-fixed-width">
+          <li class="tab"><a class="active" href="#automatic">Automatic</a></li>
+          <li class="tab"><a href="#manual">Manual</a></li>
+        </ul>
+      </div>
+      <div class="card-content">
+        <div class="row">
+          <div id="automatic">
+            <punishment-dropdown [(ngModel)]="case.punishments" name="case.punishments"
+                                 label="Punishments"></punishment-dropdown>
+          </div>
+          <div id="manual">
+            <dropdown [(ngModel)]="case.outcome" name="case.outcome" [options]="outcomes" label="Outcome"></dropdown>
+
+            <ng-container *ngIf="showDuration">
+              <div class="input-field time">
+                <number-box [(ngModel)]="outcometime" name="outcometime" label="Outcome Duration"></number-box>
+              </div>
+              <div class="units">
+                <dropdown [(ngModel)]="outcometimeunit" name="outcometimeunit" [options]="timeunits" label="Time Units"></dropdown>
+              </div>
+            </ng-container>
+          </div>
+          <button type="submit" class="btn right" [disabled]="!staffForm.form.valid">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<div class="role-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/roles"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Role</h1>
+          </div>
+          <ng-template #old>
+            <h5>Role</h5>
+            {{role.name}} ({{role.id}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #roleForm="ngForm" (ngSubmit)="save()">
+          <text-box [(ngModel)]="role.name" name="role.name" label="Name"></text-box>
+          <check-box [(ngModel)]="role.isActive" name="role.isActive" label="Active"></check-box>
+          <permissions-editor [(ngModel)]="role.permissions" name="role.permissions" label="Permissions" [apiPermission]="true" [panelPermission]="true"></permissions-editor>
+          <button type="submit" class="btn right" [disabled]="!roleForm.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

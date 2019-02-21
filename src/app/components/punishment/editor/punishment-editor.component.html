@@ -1,0 +1,74 @@
+<div class="phrase-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/punishments"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <ng-container *ngIf="isCreate; else old">
+          <h5>New Punishment</h5>
+        </ng-container>
+        <ng-template  #old>
+          <h5>Punishment ID</h5>
+          {{id}}
+        </ng-template >
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #phraseForm="ngForm" (ngSubmit)="save()" autocomplete="off">
+          <div class="input-field">
+            <input type="text" [(ngModel)]="punishment.offense" id="punishment.offense" name="punishment.offense" class="validate" required/>
+            <label for="punishment.offense" [ngClass]="{'active': punishment.offense}">Offense Name</label>
+          </div>
+
+          <div class="input-field">
+            <input type="text" [(ngModel)]="punishment.description" id="punishment.description" name="punishment.description" class="validate" required/>
+            <label for="punishment.description" [ngClass]="{'active': punishment.description}">Description</label>
+          </div>
+
+          <div class="input-field">
+            <input type="text" [(ngModel)]="punishment.conditions" id="punishment.conditions" name="punishment.conditions" class="validate"/>
+            <label for="punishment.conditions" [ngClass]="{'active': punishment.conditions}">Conditions</label>
+          </div>
+
+          <div class="input-field">
+            <input type="text" [(ngModel)]="punishment.examples" id="punishment.examples" name="punishment.examples" class="validate"/>
+            <label for="punishment.examples" [ngClass]="{'active': punishment.examples}">Examples</label>
+          </div>
+
+          <div id="actions">
+            <table class="striped responsive-table">
+              <tr>
+                <th>Order</th>
+                <th>Action</th>
+                <th>Duration</th>
+                <th>Time Units</th>
+                <th></th>
+              </tr>
+              <tr *ngFor="let action of punishmentActions; let i = index">
+                <td>{{action.order}}</td>
+                <td>
+                  <select [(ngModel)]="action.action" id="punishmentActions[{{i}}].action" name="punishmentActions[{{i}}].action" class="validate" required>
+                    <option *ngFor="let a of pActions" [value]="a.value">{{a.name}}</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" [(ngModel)]="action.duration" id="punishmentActions[{{i}}].duration" name="punishmentActions[{{i}}].duration" class="validate" [disabled]="requireDuration(punishmentActions[i].action)"/>
+                </td>
+                <td>
+                  <select [(ngModel)]="action.duration_time_unit" id="punishmentActions[{{i}}].duration_time_unit" name="punishmentActions[{{i}}].duration_time_unit" class="validate" [disabled]="requireDuration(punishmentActions[i].action)">
+                    <option *ngFor="let timeunit of timeunits" [value]="timeunit.value">{{timeunit.name}}</option>
+                  </select>
+                </td>
+                <td><button class="btn red left" (click)="removeRow(action.order)">Remove</button></td>
+              </tr>
+            </table>
+            <button class="btn green left" (click)="addRow($event)">Add</button>
+            <button type="submit" class="btn right" [disabled]="!phraseForm.form.valid">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

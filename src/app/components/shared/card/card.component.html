@@ -1,0 +1,8 @@
+<div class="card">
+  <div *ngIf="displayTitle" class="card-title">
+    <ng-content select="title"></ng-content>
+  </div>
+  <div class="card-content">
+    <ng-content select="content"></ng-content>
+  </div>
+</div>

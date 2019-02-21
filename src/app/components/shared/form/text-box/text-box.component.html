@@ -1,0 +1,4 @@
+<div class="input-field">
+  <input type="text" [(ngModel)]="value" id="{{id}}" [ngClass]="{'validate': validate}" (blur)="onBlur()" (change)="onChange($event)" [disabled]="disabled" [required]="required"/>
+  <label for="{{id}}" [ngClass]="{'active': value}">{{label}}</label>
+</div>

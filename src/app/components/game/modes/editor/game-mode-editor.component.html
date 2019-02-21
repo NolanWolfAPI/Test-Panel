@@ -1,0 +1,46 @@
+<div class="game-mode-details">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/games/{{gameId}}/edit"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Game Mode</h1>
+          </div>
+          <ng-template #old>
+            <h5>Game Mode</h5>
+            {{gameMode.name}} ({{id}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #form="ngForm" (ngSubmit)="save()">
+          <material-dropdown [(ngModel)]="gameMode.iconMap" name="gameMode.iconMap" label="Icon"></material-dropdown>
+          <text-box [(ngModel)]="gameMode.name" name="gameMode.name" label="Name"></text-box>
+          <text-box [(ngModel)]="gameMode.description" name="gameMode.description" label="Description"></text-box>
+
+          <div class="row">
+            <div class="col m6" style="padding-left: 0">
+              <number-box [(ngModel)]="gameMode.minPlayerCount" name="gameMode.minPlayerCount" label="Minimum Player Count"></number-box>
+              <number-box [(ngModel)]="gameMode.minJoiningTeamSize" name="gameMode.minJoiningTeamSize" label="Minimum Team Joinig Size"></number-box>
+            </div>
+            <div class="col m6" style="padding-right: 0">
+              <number-box [(ngModel)]="gameMode.maxPlayerCount" name="gameMode.maxPlayerCount" label="Maximum Player Count"></number-box>
+              <number-box [(ngModel)]="gameMode.maxJoiningTeamSize" name="gameMode.maxJoiningTeamSize" label="Maximum Team Joinig Size"></number-box>
+            </div>
+          </div>
+
+          <check-box [(ngModel)]="gameMode.isLive" name="gameMode.isLive" label="Live"></check-box>
+          <check-box [(ngModel)]="gameMode.isActive" name="gameMode.isActive" label="Active"></check-box>
+          <check-box [(ngModel)]="gameMode.isBeta" name="gameMode.isBeta" label="Beta"></check-box>
+
+          <button type="submit" class="btn btn-success right" [disabled]="!form.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

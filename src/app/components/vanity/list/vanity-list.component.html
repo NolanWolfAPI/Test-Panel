@@ -1,0 +1,35 @@
+<div class="vanities">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Vanities</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <a routerLink="/vanities/new"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Currency</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let row of vanities" routerLink="/vanities/{{row.id}}/edit">
+          <td>{{row.name}}</td>
+          <td>{{row.category}}</td>
+          <td>{{row.currency}}</td>
+          <td class="actions">
+            <has-permission permission="vanities.delete">
+              <i (click)="delete($event, row.id)" title="Delete" class="material-icons">delete</i>
+            </has-permission>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

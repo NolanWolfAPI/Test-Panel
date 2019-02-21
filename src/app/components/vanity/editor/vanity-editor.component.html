@@ -1,0 +1,47 @@
+<div class="vanity-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/vanities"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h5>New Vanity Item</h5>
+          </div>
+          <ng-template #old>
+            <h5>Vanity Item</h5>
+            {{vanity.name}} ({{vanity.id}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #form="ngForm" (ngSubmit)="save()">
+          <text-box [(ngModel)]="vanity.name" name="vanity.name" label="Name" required="true"></text-box>
+          <dropdown [(ngModel)]="vanity.category" name="vanity.category" [options]="categoryOptions" label="Category" required="true"></dropdown>
+          <check-box [(ngModel)]="vanity.consumable" name="vanity.consumable" label="Consumable" required="true"></check-box>
+          <number-box [(ngModel)]="vanity.price" name="vanity.price" label="Price" required="true"></number-box>
+          <!--<dropdown [(ngModel)]="vanity.currency" name="vanity.currency"></dropdown>-->
+          <dropdown [(ngModel)]="vanity.slot" name="vanity.slot" [options]="slotOptions" label="Slot" required="true"></dropdown>
+          <dropdown [(ngModel)]="vanity.type" name="vanity.type" [options]="typeOptions" label="Type" required="true"></dropdown>
+
+          <ul #tabs class="tabs">
+            <li class="tab" *ngFor="let item of itemInformation"><a href="#{{item?.key}}">{{item?.key}}</a></li>
+          </ul>
+          <div id="{{item?.key}}" *ngFor="let item of itemInformation, index as i">
+            <!--<object-editor [(ngModel)]="item.value" name="itemInformation[{{i}}].value"></object-editor>-->
+            <material-dropdown [(ngModel)]="itemInformation[i].value.material" name="itemInformation[{{i}}].value.material" label="Material"></material-dropdown>
+            <text-box [(ngModel)]="itemInformation[i].value.skinUUID" name="itemInformation[{{i}}].value.skinUUID" label="Skin UUID"></text-box>
+            <text-box [(ngModel)]="itemInformation[i].value.skinSecret" name="itemInformation[{{i}}].value.skinSecret" label="Skin Secret"></text-box>
+            <text-box [(ngModel)]="itemInformation[i].value.skinTexture" name="itemInformation[{{i}}].value.skinTexture" label="Skin Texture"></text-box>
+            <text-box [(ngModel)]="itemInformation[i].value.data" name="itemInformation[{{i}}].value.data" label="Data"></text-box>
+          </div>
+
+          <button type="submit" class="btn btn-success right" [disabled]="!form.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

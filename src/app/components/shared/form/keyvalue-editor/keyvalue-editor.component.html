@@ -1,0 +1,41 @@
+<div class="keyvalue-editor">
+  <label *ngIf="label">{{label}}</label>
+  <table class="striped responsive-table">
+    <tr>
+      <th *ngFor="let header of headers">{{header}}</th>
+      <th *ngIf="editable"></th>
+    </tr>
+    <tr *ngFor="let item of innerValue; index as i">
+      <td>{{keyCellRender(item.key)}}</td>
+      <td [ngSwitch]="valueType(item)">
+        <number-box *ngSwitchCase="'number'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key" [onChange]="_onChange" ></number-box>
+        <text-box *ngSwitchCase="'string'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key"></text-box>
+        <check-box *ngSwitchCase="'boolean'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key"></check-box>
+        <object-editor *ngSwitchCase="'object'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key"> </object-editor>
+        <div *ngSwitchDefault="">
+          {{item.value}}
+        </div>
+      </td>
+      <td *ngIf="editable">
+        <i (click)="delete($event, item.key)" class="material-icons delete right" title="Delete Item">delete</i>
+      </td>
+    </tr>
+    <tr *ngIf="editable">
+      <td colspan="3"><hr></td>
+    </tr>
+    <tr *ngIf="editable">
+      <td></td>
+      <td>
+        <div *ngIf="useNewKeyDowndown; else text">
+          <dropdown [(ngModel)]="newItem" name="newItem" [options]="newKeyDropdown"></dropdown>
+        </div>
+        <ng-template #text>
+          <text-box [(ngModel)]="newItem" name="newItem"></text-box>
+        </ng-template>
+      </td>
+      <td>
+        <i (click)="add($event)" class="material-icons add right" title="New Item">add</i>
+      </td>
+    </tr>
+  </table>
+</div>

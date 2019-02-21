@@ -1,0 +1,32 @@
+<div class="ranks">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Ranks</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <a routerLink="/ranks/new"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+    </div>
+      <div class="card-content">
+        <table>
+          <tr>
+            <th>Rank</th>
+            <th></th>
+          </tr>
+
+          <tr *ngFor="let row of ranks" routerLink="/ranks/{{row.id}}/edit">
+            <td>{{row.name}}</td>
+            <td class="actions">
+              <!--<a routerLink="/ranks/{{row.id}}/edit" title="Edit"><i class="material-icons">edit</i></a>-->
+              <has-permission permission="ranks.delete">
+                <i (click)="delete($event, row.id)" title="Delete" class="material-icons">delete</i>
+              </has-permission>
+            </td>
+          </tr>
+        </table>
+      </div>
+  </div>
+</div>

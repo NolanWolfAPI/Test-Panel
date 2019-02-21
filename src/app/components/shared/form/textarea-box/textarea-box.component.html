@@ -1,0 +1,4 @@
+<div class="input-field">
+  <textarea #box [(ngModel)]="value" id="{{id}}" [ngClass]="{'active':active, 'materialize-textarea':true}" (blur)="onBlur()" [readonly]="readonly && 'readonly'" [disabled]="disabled && 'disabled'"></textarea>
+  <label for="{{id}}" [ngClass]="{'active': value}">{{label}}</label>
+</div>

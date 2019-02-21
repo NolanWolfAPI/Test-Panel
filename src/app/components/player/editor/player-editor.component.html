@@ -1,0 +1,86 @@
+<div class="player-details">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/players"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <h5>Player</h5>
+        {{player.displayName}} ({{player.uuid}})
+      </div>
+    </div>
+    <div class="card-tabs">
+      <ul #tabs class="tabs tabs-fixed-width">
+        <li class="tab"><a class="active" href="#information">Information</a></li>
+        <li class="tab"><a href="#badges">Badges</a></li>
+        <li class="tab"><a href="#blockusers">Blocked Users</a></li>
+        <li class="tab"><a href="#finances">Finances</a></li>
+        <li class="tab"><a href="#moderation">Moderation</a></li>
+        <li class="tab"><a href="#vanity">Vanity</a></li>
+        <li class="tab"><a href="#prefereneces">Preferences</a></li>
+        <li class="tab"><a href="#forum">Forum</a></li>
+      </ul>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #playerForm="ngForm" (ngSubmit)="save()">
+          <div id="information">
+            <text-box label="Display Name" [(ngModel)]="player.displayName" name="player.displayName" disabled></text-box>
+            <text-box label="Player UUID" [(ngModel)]="player.uuid" name="player.uuid" disabled></text-box>
+            <text-box label="Last IP" [(ngModel)]="player.ip" name="player.ip" disabled></text-box>
+            <rank-dropdown label="Rank" [(ngModel)]="player.rank_id"  name="player.rank_id"></rank-dropdown>
+            <language-dropdown label="Player Language" [(ngModel)]="player.language" name="player.language" [additionalOptions]="[{key:'Server Default',value:null}]"></language-dropdown>
+          </div>
+
+          <div id="badges">
+            <table class="striped responsive-table">
+              <tr>
+                <th>Badge Name</th>
+                <th>Progress</th>
+                <th>Time Earned</th>
+              </tr>
+              <tr *ngFor="let badge of player.badges">
+                <td>{{badge.badge_id}}</td>
+                <td>{{badge.progress}}</td>
+                <td>{{badge.timeEarned}}</td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="blockusers">
+            <keyvalue-editor [(ngModel)]="player.blockedUsers" name="player.blockedUsers" [headers]="['Username','Blocked At']" [editable]="false"></keyvalue-editor>
+          </div>
+
+          <div id="finances">
+            <keyvalue-editor [(ngModel)]="player.balances" name="player.balances" [keyCellRender]="getCurrencyName" [headers]="['Currency', 'Amount']" [useNewKeyDowndown]="true" [newKeyDropdown]="financeNewDropDownOptions()"></keyvalue-editor>
+          </div>
+
+          <div id="moderation">
+            <check-box [(ngModel)]="player.inJudgement" name="player.inJudgement" label="In Judgement"></check-box>
+            <check-box [(ngModel)]="player.moderation.banned" name="player.moderation.banned" label="Banned"></check-box>
+            <number-box [(ngModel)]="player.moderation.ban_end_time" name="player.moderation.ban_end_time" label="Ban End Time"></number-box>
+            <check-box [(ngModel)]="player.moderation.muted" name="player.moderation.muted" label="Muted"></check-box>
+            <number-box [(ngModel)]="player.moderation.mute_end_time" name="player.moderation.mute_end_time" label="Mute End Time"></number-box>
+          </div>
+
+          <div id="vanity">
+            <keyvalue-editor [(ngModel)]="player.vanityitems" name="player.vanityitems" [headers]="['Item','Value']"></keyvalue-editor>
+          </div>
+
+          <div id="prefereneces">
+            <keyvalue-editor [(ngModel)]="player.preferences" name="player.preferences" [headers]="['Setting','Value']"></keyvalue-editor>
+          </div>
+
+          <div id="forum">
+            <text-box label="Forum Id" [(ngModel)]="player.forumdata.forumID" name="player.forumdata.forumID" required disabled></text-box>
+            <check-box label="Registered" [(ngModel)]="player.forumdata.registered" name="player.forumdata.registered"></check-box>
+            <text-box label="Forum Key" [(ngModel)]="player.forumdata.forumKey" name="player.forumdata.forumKey" required disabled></text-box>
+            <number-box label="Forum Key Expires At" [(ngModel)]="player.forumdata.forumKeyExpires_at" name="player.forumdata.forumKeyExpires_at" required disabled></number-box>
+          </div>
+
+          <button type="submit" class="btn btn-success right" [disabled]="!playerForm.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

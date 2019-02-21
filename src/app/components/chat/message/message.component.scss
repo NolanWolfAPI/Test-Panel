@@ -1,0 +1,25 @@
+.message {
+  display: flex;
+  margin-top: 1em;
+
+  .profile img{
+    max-width: 2em;
+    padding-right: 1em;
+  }
+
+  .text {
+    padding:.2em 1em;
+    background-color: #EFEFEF;
+    color: #7a7a7a;
+    width: 100%;
+  }
+
+  &.self {
+    flex-direction: row-reverse;
+
+    .profile img{
+      padding-right: 0;
+      padding-left: 1em;
+    }
+  }
+}

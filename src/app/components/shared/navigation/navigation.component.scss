@@ -1,0 +1,47 @@
+nav.main {
+  min-height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  width: 250px;
+  background-color: #EFEFEF;
+  margin-top: 64px;
+
+  .top > li a {
+    padding: .5em 1em;
+    width: 100%;
+    display: inline-flex;
+    color: #7A7A7A;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    .label {
+      margin-left: 1rem;
+      user-select: none;
+      line-height: 54px;
+    }
+  }
+
+  .children > li {
+    line-height: 1em !important;
+
+    a {
+      padding: 0em 1em;
+      //text-decoration: underline;
+      //font-weight: 700;
+      font-size: .75em;
+
+
+      span {
+        line-height: 4em !important;
+      }
+
+      i {
+        height: 0;
+      }
+    }
+  }
+
+  ul, li {
+    width: 100%;
+  }
+}

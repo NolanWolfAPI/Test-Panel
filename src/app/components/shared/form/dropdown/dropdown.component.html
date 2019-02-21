@@ -1,0 +1,6 @@
+<div class="input-field">
+  <select [(ngModel)]="value" (blur)="onBlur()" [ngClass]="{'validate': validate}" [disabled]="disabled && 'disabled'" [required]="required && 'required'">
+    <option *ngFor="let option of allOptions" [value]="option.value" [selected]="option.selected">{{option.key}}</option>
+  </select>
+  <label [ngClass]="{'active': true}">{{label}}</label>
+</div>

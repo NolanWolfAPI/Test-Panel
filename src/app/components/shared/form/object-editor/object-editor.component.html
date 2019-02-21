@@ -1,0 +1,13 @@
+<div class="object-editor">
+  <div *ngFor="let item of innerValue; index as i">
+    <div  [ngSwitch]="valueType(item)">
+      <number-box *ngSwitchCase="'number'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="i" [label]="item.key" [onChange]="onChange"></number-box>
+      <text-box *ngSwitchCase="'string'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="i" [label]="item.key" [onChange]="onChange"></text-box>
+      <check-box *ngSwitchCase="'boolean'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="i" [label]="item.key" [onChange]="onChange"></check-box>
+      <object-editor *ngSwitchCase="'object'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="i"></object-editor>
+      <div *ngSwitchDefault="">
+        {{item}}
+      </div>
+    </div>
+  </div>
+</div>

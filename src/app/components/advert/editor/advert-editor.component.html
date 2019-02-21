@@ -1,0 +1,32 @@
+<div class="staff-editor">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <a routerLink="/adverts"><i class="material-icons">chevron_left</i> BACK</a>
+      </div>
+      <div class="right-side">
+        <div>
+          <div *ngIf="isCreate; else old">
+            <h1>New Advert</h1>
+          </div>
+          <ng-template #old>
+            <h5>Advert</h5>
+            {{advert.name}} ({{id}})
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="row">
+        <form #form="ngForm" (ngSubmit)="save()">
+          <text-box [(ngModel)]="advert.name" name="advert.name" label="Name" required validate></text-box>
+          <text-box [(ngModel)]="advert.type" name="advert.type" label="Type" required validate></text-box>
+          <number-box [(ngModel)]="advert.frequency" name="advert.frequency" label="Frequency" required validate></number-box>
+          <textarea-box [(ngModel)]="message" name="message" label="Message" required validate></textarea-box>
+
+          <button type="submit" class="btn btn-success right" [disabled]="!form.form.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
