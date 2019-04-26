@@ -5,9 +5,5 @@ export class Friend extends Base {
   sender:UUID;
   receiver:UUID;
   accepted:boolean;
-  description:string;
-  iconMap: object;
-  isLive: boolean;
-  isActive: boolean;
-  isBeta: boolean;
+  accepted_at:number;
 }
