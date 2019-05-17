@@ -11,4 +11,4 @@ f = open(os.environ['FILE_PATH'], 'w')
 f.write(s)
 f.close()
 
-os.system('nginx -g daemon off')
+os.system('nginx -g daemon off;')
