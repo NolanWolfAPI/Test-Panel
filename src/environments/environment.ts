@@ -4,9 +4,9 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  name:'minevibe',
+  name: 'temp',
   production: true,
-  title: 'Minevibe Panel',
-  baseAuthURL: 'http://auth.minevibe.net',
-  baseAPIURL: 'https://api.minevibe.net:2000',
+  title: 'temp',
+  baseAuthURL: 'temp',
+  baseAPIURL: 'temp',
 };
