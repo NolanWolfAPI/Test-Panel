@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NavLink} from 'app/models/shared/nav-link';
 
 @Component ({
@@ -10,8 +10,12 @@ export class NavigationComponent {
 
   @Output() pageChange = new EventEmitter();
 
+  @Input() selectedCategory: string;
+
   links: NavLink[] = [
-    new NavLink('/', 'Dashboard', 'dashboard'),
+    new NavLink(null, 'Dashboard', 'dashboard', [
+      new NavLink('/', 'Dashboard', 'b', null),
+    ]),
     new NavLink(null, 'People', 'people', [
       new NavLink('/players', 'Players', 'b', null, 'players.list'),
       new NavLink('/staff', 'Staff', 'b', null, 'staff.list'),
@@ -72,6 +76,10 @@ export class NavigationComponent {
     this.expanded = !this.expanded;
   }
 
+  get _links() {
+    // this.click(this.links.filter(p => p.name === this.selectedCategory)[0]);
+    return this.links.filter(p => p.name === this.selectedCategory);
+  }
 
   pageChanged(event){
     this.pageChange.emit(event)

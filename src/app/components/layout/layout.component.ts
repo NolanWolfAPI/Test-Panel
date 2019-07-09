@@ -8,8 +8,13 @@ import {Component} from "@angular/core";
 export class LayoutComponent {
 
   pageTitle:string = 'Dashboard';
+  category:string = 'Dashboard';
 
   pagedLoaded(data) {
     this.pageTitle = data;
+  }
+
+  openCategory(newCategory) {
+    this.category = newCategory;
   }
 }

@@ -1,18 +1,39 @@
 <nav class="sub">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo"><i class="material-icons">beach_access</i> <span *ngIf="pageTitle.length > 0" class="marked">{{pageTitle}}</span></a>
+
+    <span>
+      <button [ngStyle]="{ 'background-color' : (isCurrent('Dashboard'))? '#73c7af' : '#ffffff' }" (click)="openCategory('Dashboard')">
+        <i _ngcontent-c2="" class="material-icons">dashboard</i>
+      </button>
+      <button (click)="openCategory('People')">
+        <i _ngcontent-c2="" class="material-icons">people</i>
+      </button>
+      <button (click)="openCategory('Games')">
+        <i _ngcontent-c2="" class="material-icons">games</i>
+      </button>
+      <button (click)="openCategory('Moderation')">
+        <i _ngcontent-c2="" class="material-icons">gavel</i>
+      </button>
+      <button (click)="openCategory('Network Settings')">
+        <i _ngcontent-c2="" class="material-icons">settings</i>
+      </button>
+      <button (click)="openCategory('Advertising')">
+        <i _ngcontent-c2="" class="material-icons">flag</i>
+      </button>
+    </span>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
         <a #dropdown class="dropdown-trigger dropdown-button" href="#" data-target="profileDropdown">
           <i class="material-icons left">arrow_drop_down</i>
-          {{name}}
+          <!--{{name}}-->
           <img class="image" src="https://crafatar.com/avatars/{{mcId}}?overlay" />
         </a>
       </li>
     </ul>
   </div>
-</nav>
 
+</nav>
 <ul id="profileDropdown" class="dropdown-content">
   <!--<has-permission permission="staff.list">-->
     <!--<li><a routerLink="/staff/{{staffId}}">Staff Profile</a></li>-->

@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {OAuthService} from 'angular-oauth2-oidc';
 
 declare let M;
@@ -10,7 +10,11 @@ declare let M;
 })
 export class SubNavigationComponent implements OnInit {
 
+  @Output() selectCategory: EventEmitter<string> = new EventEmitter<string>(true);
+
   @Input() pageTitle:string = '';
+
+  @Input() selectedCategory: string;
 
   @ViewChild('dropdown', {read: ElementRef}) reference: ElementRef;
 
@@ -41,6 +45,14 @@ export class SubNavigationComponent implements OnInit {
     const claims:any = this.authService.getIdentityClaims();
     if (!claims) return null;
     return `${claims.given_name} ${claims.family_name}`;
+  }
+
+  openCategory(parameter) {
+    this.selectCategory.emit(parameter);
+  }
+
+  isCurrent(value) {
+    return value === this.selectedCategory;
   }
 
   clearSession(event) {

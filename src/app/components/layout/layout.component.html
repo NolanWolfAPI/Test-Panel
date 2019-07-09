@@ -1,6 +1,6 @@
 <div class="layout">
-  <sub-navigation [pageTitle]="pageTitle"></sub-navigation>
-  <navigation (pageChange)="pagedLoaded($event)"></navigation>
+  <sub-navigation (selectCategory)="openCategory($event)" [pageTitle]="pageTitle"></sub-navigation>
+  <navigation (pageChange)="pagedLoaded($event)" [selectedCategory]="category"></navigation>
   <div class="content">
     <router-outlet></router-outlet>
   </div>

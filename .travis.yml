@@ -10,7 +10,7 @@ services:
 script:
   - npm install -g @angular/cli@6.0.8
   - npm install
-  - ng build
+  - ng build --prod
   
 deploy:
   provider: script

@@ -1,10 +1,10 @@
 nav.main {
-  min-height: 100vh;
+  min-width: 100vw;
   overflow-y: auto;
   position: fixed;
-  width: 250px;
-  background-color: #EFEFEF;
+  background-color: #DFDFDF;
   margin-top: 64px;
+  box-shadow: none!important;
 
   .top > li a {
     padding: .5em 1em;
@@ -15,7 +15,6 @@ nav.main {
     font-weight: 500;
 
     .label {
-      margin-left: 1rem;
       user-select: none;
       line-height: 54px;
     }
@@ -32,7 +31,7 @@ nav.main {
 
 
       span {
-        line-height: 4em !important;
+        line-height: 64px!important;
       }
 
       i {
@@ -41,7 +40,16 @@ nav.main {
     }
   }
 
-  ul, li {
-    width: 100%;
+  ul > li > a > span .label {
+    margin-left: 0!important;
+    padding: 0!important;
+    position: relative!important;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 64px!important;
+  }
+
+  ul li a {
+    height: 64px;
   }
 }

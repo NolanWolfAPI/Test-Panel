@@ -1,7 +1,7 @@
 nav.sub {
-  background-color: #FFC60F;
+  background-color: #1f1f1f;
   position: fixed;
-  box-shadow: none;
+  box-shadow: none!important;
   z-index: 90;
 
   .marked {
@@ -19,11 +19,30 @@ nav.sub {
   }
 
   .brand-logo {
+    position: unset;
     padding: 0 .7em;
     font-size: 21px;
   }
 
   .dropdown-content {
     top: 64px !important;
+    width: 250px!important;
+  }
+
+  .dropdown-content li>a{
+    color: black!important;
+    width: 250px!important;
+  }
+
+  button {
+    background-color: transparent;
+    color: white;
+    height: 64px;
+    width: 64px;
+    border: none;
+  }
+
+  button:hover {
+    background-color: #272727;
   }
 }
