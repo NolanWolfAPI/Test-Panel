@@ -5,10 +5,6 @@
   "scripts": {
     "ng": "ng",
     "start:local": "ng serve --host 0.0.0.0 -c local",
-    "start:minevibe": "ng serve --host 0.0.0.0 -c minevibe",
-    "start:minevibe-localapi": "ng serve --host 0.0.0.0 -c minevibe-localapi",
-    "start:minevibetest": "ng serve --host 0.0.0.0 -c minevibetest",
-    "start:ninelives": "ng serve --host 0.0.0.0 -c ninelives",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

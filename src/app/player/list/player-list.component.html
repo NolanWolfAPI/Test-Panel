@@ -1,0 +1,37 @@
+<div class="player">
+  <div class="card">
+    <div class="card-title">
+      <div class="left-side">
+        <h5>Players</h5>
+      </div>
+      <div class="right-side row">
+        <div>
+          <div class="input-field">
+            <i class="material-icons prefix" (click)="search()">search</i>
+            <input placeholder="Player Search" [(ngModel)]="searchQuery" id="search" (keyup.enter)="search()">
+            <label for="search"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <table>
+        <tr>
+          <th>User</th>
+          <th>UUID</th>
+          <th>Rank</th>
+          <th>In Judgement</th>
+        </tr>
+        <tr *ngFor="let row of rows" routerLink="/players/{{row.player.uuid}}/edit">
+          <td>{{row.player.displayName}}</td>
+          <td>{{row.player.uuid}}</td>
+          <td>{{row.rank.name}}</td>
+          <td>
+            <check-box [(ngModel)]="row.player.inJudgement" name="row.player.inJudgement"></check-box>
+          </td>
+        </tr>
+      </table>
+      <pagination [totalCount]="total" [pageNumber]="pageNumber" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+</div>
