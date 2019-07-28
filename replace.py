@@ -1,17 +1,16 @@
 import os
 
-
 # Setup environment
-old = 'var environment = {\n    name: \'temp\',\n    production: true,\n    title: \'temp\',\n    baseAuthURL: ' \
-      '\'temp\',\n    baseAPIURL: \'temp\',\n};'
-new = 'var environment = {name: \'Marble\', production: true, title: \'Marble Panel\', baseAuthURL: \'' \
-      + os.environ['BASE_AUTH_URL'] + '\', baseAPIURL: \'' + os.environ['BASE_API_URL'] + '\',};'
+old = 'r={name:"temp",production:!0,title:"temp",baseAuthURL:"temp",baseAPIURL:"temp"}'
+new = 'r={name:"Marble",production:!0,title:"Marble Panel", baseAuthURL:"' + os.environ['BASE_AUTH_URL'] + '",baseAPIURL:"' + os.environ['BASE_API_URL'] + '"} '
 
-s = open(os.environ['FILE_PATH']).read()
-s = s.replace(old, new)
-f = open(os.environ['FILE_PATH'], 'w')
-f.write(s)
-f.close()
+for filename in os.listdir(os.environ['FILE_PATH']):
+  if filename.endswith(".js"):
+    s = open(os.environ['FILE_PATH'] + "/" + filename).read()
+    s = s.replace(old, new)
+    f = open(os.environ['FILE_PATH'] + "/" + filename, 'w')
+    f.write(s)
+    f.close()
 
 # Setup nginx
 src = open('/etc/nginx/nginx.conf', 'r')

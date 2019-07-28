@@ -1,7 +1,7 @@
 export const environment = {
-  name: 'production',
+  name: 'temp',
   production: true,
-  title: 'NP Panel',
-  baseAuthURL: 'https://auth.marble.network',
-  baseAPIURL: 'https://api.marble.network',
+  title: 'temp',
+  baseAuthURL: 'temp',
+  baseAPIURL: 'temp',
 };
