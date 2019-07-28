@@ -6,7 +6,7 @@
       </div>
       <div class="right-side row">
         <div>
-          <check-box [(ngModel)]="showInActive" name="showInActive" label="Show disabled staff" [onChange]="toggle"></check-box>
+          <check-box [(ngModel)]="showInActive" name="showInActive" label="Show disabled staff" (Change)="toggle"></check-box>
         </div>
         <div>
           <div class="input-field">

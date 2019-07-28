@@ -8,7 +8,7 @@
     <tr *ngFor="let item of innerValue; index as i">
       <td>{{keyCellRender(item.key)}}</td>
       <td [ngSwitch]="valueType(item)">
-        <number-box *ngSwitchCase="'number'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key" [onChange]="_onChange" ></number-box>
+        <number-box *ngSwitchCase="'number'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key" (Change)="_onChange" ></number-box>
         <text-box *ngSwitchCase="'string'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key"></text-box>
         <check-box *ngSwitchCase="'boolean'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key"></check-box>
         <object-editor *ngSwitchCase="'object'" [(ngModel)]="item.value" name="innerValue[{{i}}].value" [id]="item.key"> </object-editor>
