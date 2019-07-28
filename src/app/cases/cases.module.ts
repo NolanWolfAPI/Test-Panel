@@ -1,4 +1,3 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -17,6 +16,7 @@ import { PunishmentModule } from 'app/punishment/punishment.module';
 import { StaffModule } from 'app/staff/staff.module';
 import { ChatModule } from 'app/chat/chat.module';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,20 +26,16 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     CaseTableComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule,
-    HttpClientModule,
     CasesRoutingModule,
     RankModule,
     SharedModule,
-    FormsModule,
     PlayerModule,
     PunishmentModule,
     StaffModule,
     ChatModule,
-    OAuthModule
   ],
   providers: [
     CaseService,

@@ -20,10 +20,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     CommonModule,
     RankRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
     SharedModule,
-    HttpClientModule,
-    OAuthModule
   ],
   exports: [
     RankDropDownComponent

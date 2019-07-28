@@ -27,8 +27,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     SharedModule,
     FormsModule,
     RolesModule,
-    HttpClientModule,
-    OAuthModule
   ],
   exports: [
     StaffDropDownComponent

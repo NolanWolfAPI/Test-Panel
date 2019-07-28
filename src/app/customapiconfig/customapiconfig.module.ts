@@ -20,8 +20,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     CustomApiConfigRoutingModule,
     SharedModule,
     FormsModule,
-    HttpClientModule,
-    OAuthModule
   ],
   providers: [
     CustomApiConfigService

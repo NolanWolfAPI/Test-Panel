@@ -25,8 +25,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     GameRoutingModule,
     SharedModule,
     FormsModule,
-    HttpClientModule,
-    OAuthModule
   ],
   providers: [
     GameService,

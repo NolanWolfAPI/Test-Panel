@@ -20,8 +20,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     ChatFiltersRoutingModule,
     SharedModule,
     FormsModule,
-    HttpClientModule,
-    OAuthModule
   ],
   providers: [
     ChatFilterService

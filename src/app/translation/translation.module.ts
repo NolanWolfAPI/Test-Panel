@@ -21,8 +21,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     SharedModule,
     FormsModule,
     LanguagesModule,
-    HttpClientModule,
-    OAuthModule
   ]
 })
 export class TranslationModule { }

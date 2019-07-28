@@ -21,8 +21,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     RolesRoutingModule,
     SharedModule,
     FormsModule,
-    HttpClientModule,
-    OAuthModule
   ],
   exports: [
     RoleDropDownComponent

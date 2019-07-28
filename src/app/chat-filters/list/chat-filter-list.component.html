@@ -31,7 +31,9 @@
             <tr *ngFor="let chatFilter of chatFilters" routerLink="/chatfilters/{{chatFilter.id}}/edit">
               <td>{{chatFilter.name}}</td>
               <td>{{chatFilter.expression}}</td>
-              <td>{{chatFilter.active}}</td>
+              <td>
+                  <check-box [(ngModel)]="chatFilter.active" name="chatFilter.active" validate [readonly]="true"></check-box>
+              </td>
             </tr>
           </ng-container>
           <ng-container *ngIf="chatFilters.length <= 0">

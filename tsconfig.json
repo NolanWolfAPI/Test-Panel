@@ -16,6 +16,6 @@
       "es2018",
       "dom"
     ],
-    "module": "esnext"
+    "module": "esNext"
   }
 }

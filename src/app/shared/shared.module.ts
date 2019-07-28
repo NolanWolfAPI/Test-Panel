@@ -21,7 +21,6 @@ import { TabKeyValueEditorComponent } from './form/tab-keyvalue-editor/tab-keyva
 import { PlayerNamePreviewBoxComponent } from './form/playernamepreview-box/playernamepreview-box.component';
 import { ObjectEditorComponent } from './form/object-editor/object-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HasPermissionComponent } from 'app/shared/has-permission/has-permission.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -59,7 +58,6 @@ const comps = [
   declarations: comps,
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,

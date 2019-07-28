@@ -6,8 +6,6 @@ import { VanityEditorComponent } from './editor/vanity-editor.component';
 import { VanityListComponent } from './list/vanity-list.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -19,8 +17,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     VanityRoutingModule,
     SharedModule,
     FormsModule,
-    HttpClientModule,
-    OAuthModule
   ]
 })
 export class VanityModule { }

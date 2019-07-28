@@ -25,8 +25,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     FormsModule,
     SharedModule,
     LanguagesModule,
-    HttpClientModule,
-    OAuthModule
   ],
   exports: [
     PlayerSearchComponent

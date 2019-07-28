@@ -17,8 +17,6 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     CommonModule,
     ReportRoutingModule,
     SharedModule,
-    HttpClientModule,
-    OAuthModule
   ]
 })
 export class ReportModule { }
