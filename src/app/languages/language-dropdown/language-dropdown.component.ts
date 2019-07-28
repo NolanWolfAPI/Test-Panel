@@ -1,7 +1,7 @@
 import {Component, forwardRef, OnInit} from "@angular/core";
-import {DropDownComponent} from "../dropdown/dropdown.component";
+import {DropDownComponent} from "../../shared/form/dropdown/dropdown.component";
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
-import {LanguageService} from "../../../languages/language.service";
+import {LanguageService} from "../language.service";
 
 export const LANGUAGE_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -11,8 +11,8 @@ export const LANGUAGE_DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component ({
   selector: "language-dropdown",
-  templateUrl: "../dropdown/dropdown.component.html",
-  styleUrls: ["../dropdown/dropdown.component.scss"],
+  templateUrl: "../../shared/form/dropdown/dropdown.component.html",
+  styleUrls: ["../../shared/form/dropdown/dropdown.component.scss"],
   providers: [LANGUAGE_DROPDOWN_CONTROL_VALUE_ACCESSOR]
 })
 export class LanguageDropDownComponent extends DropDownComponent implements OnInit{

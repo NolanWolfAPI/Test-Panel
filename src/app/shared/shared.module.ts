@@ -59,7 +59,6 @@ const comps = [
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
     OAuthModule

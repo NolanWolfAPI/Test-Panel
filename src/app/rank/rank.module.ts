@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { RankService } from './rank.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     RankRoutingModule,
     FormsModule,
     SharedModule,
+  ],
+  providers: [
+    RankService
   ],
   exports: [
     RankDropDownComponent

@@ -11,6 +11,8 @@ import { SharedModule } from 'app/shared/shared.module';
 import { LanguagesModule } from 'app/languages/languages.module';
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { PlayerService } from './player.service';
+import { ReducedPlayerService } from './player.reduced.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,10 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     FormsModule,
     SharedModule,
     LanguagesModule,
+  ],
+  providers: [
+    PlayerService,
+    ReducedPlayerService
   ],
   exports: [
     PlayerSearchComponent

@@ -11,7 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { SubNavigationComponent } from './layout/sub-navigation/sub-navigation.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

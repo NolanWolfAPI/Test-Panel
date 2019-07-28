@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { RolesModule } from 'app/roles/roles.module';
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { StaffService } from './staff.service';
+import { ReducedStaffService } from './staff.reduced.service';
+import { PlayerModule } from 'app/player/player.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,12 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     SharedModule,
     FormsModule,
     RolesModule,
+    PlayerModule,
+    RankModule
+  ],
+  providers:[
+    StaffService,
+    ReducedStaffService
   ],
   exports: [
     StaffDropDownComponent

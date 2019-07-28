@@ -9,6 +9,7 @@ import { SharedModule } from 'app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { RoleService } from './role.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     RolesRoutingModule,
     SharedModule,
     FormsModule,
+  ],
+  providers: [
+    RoleService
   ],
   exports: [
     RoleDropDownComponent
